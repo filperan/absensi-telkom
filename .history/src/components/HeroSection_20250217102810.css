@@ -1,0 +1,37 @@
+/* HeroSection.css */
+.hero {
+    background-color: #e74c3c;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 43px;
+    padding: 100px 20px;
+    position: relative;
+    
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .jelajahi-sekarang {
+    background-color: white;
+    color: #e74c3c;
+    border-radius: 20px;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    opacity: 0.8;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .jelajahi-sekarang:hover {
+    background-color: #ed9d95;
+    color: white;
+    transform: translateY(-5px); /* Geser tombol ke atas 5px */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }

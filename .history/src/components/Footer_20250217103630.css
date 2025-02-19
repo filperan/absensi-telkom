@@ -1,0 +1,59 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content {
+  flex: 1 0 auto; 
+  /* Membuat konten utama fleksibel */
+}
+
+.footer {
+  position: absolute; /* Tambahkan properti position absolute */
+  bottom: 0; /* Atur posisi footer di bawah */
+  width: 100%; /* Atur lebar footer */
+  background-color: #282c34;
+  padding: clamp(10px, 2vw, 20px); /* Ubah padding menjadi relatif terhadap viewport */
+  color: white;
+  text-align: center;
+  position: sticky;
+  font-size: clamp(14px, 1.5vw, 18px); /* Ubah ukuran font menjadi relatif terhadap viewport */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1vw, 20px); /* Ubah jarak antar elemen menjadi relatif terhadap viewport */
+}
+
+.footer-section {
+  flex: 1;
+  margin: clamp(10px, 1vw, 20px); /* Ubah margin menjadi relatif terhadap viewport */
+}
+
+.footer-section img {
+  max-width: clamp(50px, 5vw, 100px); /* Ubah ukuran gambar menjadi relatif terhadap viewport */
+}
+
+.footer-section p {
+  margin: clamp(5px, 0.5vw, 10px); /* Ubah margin menjadi relatif terhadap viewport */
+}
+
+.social-media a {
+  margin: clamp(5px, 0.5vw, 10px); /* Ubah margin menjadi relatif terhadap viewport */
+  color: white;
+  text-decoration: none;
+  font-size: clamp(12px, 1vw, 16px); /* Ubah ukuran font menjadi relatif terhadap viewport */
+}
+
+.social-media a:hover {
+  text-decoration: underline;
+}

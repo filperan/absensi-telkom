@@ -1,0 +1,50 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd; /* Tambahkan border bawah */
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px; /* Tambahkan margin kanan */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0; /* Hapus margin */
+  padding: 0; /* Hapus padding */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out; /* Tambahkan efek transisi */
+}
+
+.nav-links a:hover {
+  color: #007bff; /* Ubah warna teks saat dihover */
+}
+
+.hubungi-kami {
+  background-color: #f0f3f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px; /* Tambahkan radius sudut */
+}
+
+.hubungi-kami:hover {
+  background-color: #007bff; /* Ubah warna background saat dihover */
+  color: white; /* Ubah warna teks saat dihover */
+  transition: background-color 0.3s ease-in-out; /* Tambahkan efek transisi */
+}
+  

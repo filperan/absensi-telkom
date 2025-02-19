@@ -1,0 +1,70 @@
+/* styles.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Footer styles */
+footer {
+  background-color: #1a202c; /* Dark background */
+  color: #e2e8f0; /* Light text color */
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container img {
+  height: 50px; /* Adjust logo size */
+}
+
+.container .flex-col {
+  margin-left: 20px;
+}
+
+.container h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.container p,
+.container a {
+  font-size: 0.875rem;
+  color: #cbd5e0; /* Light text color */
+}
+
+.container a {
+  transition: color 0.3s ease;
+}
+
+.container a:hover {
+  color: #94a3b8; /* Hover color */
+}
+
+.social-icons a {
+  margin-left: 15px;
+}
+
+.social-icons svg {
+  height: 24px;
+  width: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container .flex-col {
+    margin: 10px 0;
+  }
+}

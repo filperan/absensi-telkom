@@ -1,0 +1,94 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  text-align: center;
+}
+
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hubungi-kami {
+  
+  border-radius: 30px;
+  border-color: #333;
+  border-text: #333;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* HeroSection.css */
+.hero {
+  background-color: #e74c3c;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.jelajahi-sekarang {
+  background-color: white;
+  color: #e74c3c;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Footer.css */
+.footer {
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* App.css */
+.login-page {
+  text-align: center;
+  padding: 50px;
+}
+
+.login-page button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
