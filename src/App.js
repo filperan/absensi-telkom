@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 import Login from './components/Login';
+import AdminDashboard from './components/AdminDashboard'; // Admin Dashboard Component
+import GuruDashboard from './components/GuruDashboard'; // Guru Dashboard Component
 import NotFound from './components/NotFound';
 import LoadingScreen from './components/LoadingScreen';
 import './App.css';
@@ -11,32 +13,39 @@ import './App.css';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState(''); // Track role after login
 
-  // Simulasi loading
+  // Simulate loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
-    
-    // Cek status autentikasi dari localStorage
+
+    // Check authentication status and role from localStorage
     const authStatus = localStorage.getItem('authenticated');
+    const role = localStorage.getItem('role');
     if (authStatus === 'true') {
       setAuthenticated(true);
+      setUserRole(role); // Set user role based on localStorage
     }
-    
+
     return () => clearTimeout(timer);
   }, []);
 
-  // Handler login berhasil
-  const handleLoginSuccess = () => {
+  // Handler for successful login
+  const handleLoginSuccess = (role) => {
     setAuthenticated(true);
+    setUserRole(role);
     localStorage.setItem('authenticated', 'true');
+    localStorage.setItem('role', role); // Store the user role in localStorage
   };
 
-  // Handler logout
+  // Handler for logout
   const handleLogout = () => {
     setAuthenticated(false);
+    setUserRole('');
     localStorage.removeItem('authenticated');
+    localStorage.removeItem('role');
   };
 
   if (loading) {
@@ -50,24 +59,37 @@ const App = () => {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HeroSection />} />
-            <Route 
-              path="/login" 
+            <Route
+              path="/login"
               element={
-                authenticated ? 
-                <Navigate to="/dashboard" /> : 
-                <Login onLoginSuccess={handleLoginSuccess} />
-              } 
+                authenticated ? (
+                  <Navigate to={userRole === 'admin' ? '/admin' : '/guru'} />
+                ) : (
+                  <Login onLoginSuccess={handleLoginSuccess} />
+                )
+              }
             />
-            <Route 
-              path="/dashboard" 
+            {/* Admin Dashboard */}
+            <Route
+              path="/admin"
               element={
-                authenticated ? 
-                <div className="dashboard-container">
-                  <h1>Selamat datang di Dashboard</h1>
-                  <p>Silakan pilih menu di atas untuk melanjutkan</p>
-                </div> : 
-                <Navigate to="/login" />
-              } 
+                authenticated && userRole === 'admin' ? (
+                  <AdminDashboard />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            {/* Guru Dashboard */}
+            <Route
+              path="/guru"
+              element={
+                authenticated && userRole === 'guru' ? (
+                  <GuruDashboard />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

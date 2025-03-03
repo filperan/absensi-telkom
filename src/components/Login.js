@@ -3,8 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
 
-const Login = () => {
-  // State management
+const Login = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     role: '',
     username: '',
@@ -14,15 +13,13 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // Handle input changes
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [id]: value
     }));
-    
-    // Clear error when user starts typing
+
     if (errors[id]) {
       setErrors(prev => ({
         ...prev,
@@ -31,61 +28,57 @@ const Login = () => {
     }
   };
 
-  // Validate form
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.role) {
       newErrors.role = 'Silakan pilih role terlebih dahulu';
     }
-    
+
     if (!formData.username.trim()) {
       newErrors.username = 'Username tidak boleh kosong';
     } else if (formData.username.length < 3) {
       newErrors.username = 'Username minimal 3 karakter';
     }
-    
+
     if (!formData.password) {
       newErrors.password = 'Password tidak boleh kosong';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Password minimal 6 karakter';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Submit handler
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     if (!validateForm()) {
-      // Show toast for validation errors
       const firstError = Object.values(errors)[0];
       if (firstError) {
         toast.error(firstError);
       }
       return;
     }
-    
+
     setLoading(true);
-    
-    // Simulasi request ke server
+
     setTimeout(() => {
-      const success = Math.random() > 0.2; // 80% success rate for demo
-      
-      if (success) {
-        toast.success(`Login berhasil sebagai ${formData.role}!`);
-        // Here you would normally redirect or set authentication state
+      if (formData.role === 'admin' && formData.username === 'admin' && formData.password === '123456') {
+        toast.success('Login berhasil sebagai Admin!');
+        onLoginSuccess('admin');
+      } else if (formData.role === 'guru' && formData.username === 'guru' && formData.password === '123456') {
+        toast.success('Login berhasil sebagai Guru!');
+        onLoginSuccess('guru');
       } else {
         toast.error('Username atau password salah. Silakan coba lagi.');
       }
-      
+
       setLoading(false);
     }, 1500);
   };
 
-  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
   };
@@ -100,13 +93,13 @@ const Login = () => {
           <h1 className="welcome-text">Selamat Datang di<br />SMK Telkom</h1>
           <p className="welcome-description">Sistem Informasi Akademik untuk Siswa, Guru, dan Orang Tua</p>
         </div>
-        
+
         <div className="login-card">
           <div className="login-header">
             <h2>Masuk ke Sistem</h2>
             <p>Silakan login untuk melanjutkan</p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="login-form">
             <div className={`form-group ${errors.role ? 'has-error' : ''}`}>
               <label htmlFor="role">Pilih Role</label>
@@ -119,15 +112,13 @@ const Login = () => {
                   onChange={handleChange}
                 >
                   <option value="">Pilih Role</option>
-                  <option value="siswa">Siswa</option>
-                  <option value="orangtua">Orang Tua</option>
                   <option value="guru">Guru</option>
                   <option value="admin">Admin</option>
                 </select>
               </div>
               {errors.role && <span className="error-message">{errors.role}</span>}
             </div>
-            
+
             <div className={`form-group ${errors.username ? 'has-error' : ''}`}>
               <label htmlFor="username">Username</label>
               <div className="input-container">
@@ -143,7 +134,7 @@ const Login = () => {
               </div>
               {errors.username && <span className="error-message">{errors.username}</span>}
             </div>
-            
+
             <div className={`form-group ${errors.password ? 'has-error' : ''}`}>
               <label htmlFor="password">Password</label>
               <div className="input-container">
@@ -167,11 +158,11 @@ const Login = () => {
               </div>
               {errors.password && <span className="error-message">{errors.password}</span>}
             </div>
-            
+
             <div className="text-right">
               <a href="#reset-password" className="forgot-password">Lupa password?</a>
             </div>
-            
+
             <button
               type="submit"
               className={`login-button ${loading ? 'loading' : ''}`}
@@ -184,13 +175,13 @@ const Login = () => {
               )}
             </button>
           </form>
-          
+
           <div className="login-footer">
             <p>Belum punya akun? <a href="#register">Daftar</a></p>
           </div>
         </div>
       </div>
-      
+
       <ToastContainer
         position="top-right"
         autoClose={3000}

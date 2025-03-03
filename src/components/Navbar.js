@@ -70,9 +70,6 @@ const Navbar = ({ authenticated, onLogout }) => {
         <ul className="nav-links desktop">
           <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Beranda</Link></li>
           <li><Link to="/tentang" className={location.pathname === '/tentang' ? 'active' : ''}>Tentang Kami</Link></li>
-          <li><Link to="/program" className={location.pathname === '/program' ? 'active' : ''}>Program Studi</Link></li>
-          <li><Link to="/guru" className={location.pathname === '/guru' ? 'active' : ''}>Guru</Link></li>
-          <li><Link to="/kehadiran" className={location.pathname === '/kehadiran' ? 'active' : ''}>Cek Kehadiran</Link></li>
         </ul>
 
         <div className="nav-buttons desktop">
@@ -81,8 +78,12 @@ const Navbar = ({ authenticated, onLogout }) => {
               <Link to="/dashboard" className="nav-button dashboard-button">Dashboard</Link>
               <button className="nav-button logout-button" onClick={onLogout}>Logout</button>
             </div>
-          ) : null}
-          <button className="nav-button hubungi-kami-button">Hubungi Kami</button>
+          ) : (
+            <>
+              <Link to="/login" className="nav-button login-button">Login</Link>
+              <button className="nav-button hubungi-kami-button">Hubungi Kami</button>
+            </>
+          )}
         </div>
       </div>
 
@@ -91,9 +92,6 @@ const Navbar = ({ authenticated, onLogout }) => {
         <ul className="nav-links mobile">
           <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Beranda</Link></li>
           <li><Link to="/tentang" className={location.pathname === '/tentang' ? 'active' : ''}>Tentang Kami</Link></li>
-          <li><Link to="/program" className={location.pathname === '/program' ? 'active' : ''}>Program Studi</Link></li>
-          <li><Link to="/guru" className={location.pathname === '/guru' ? 'active' : ''}>Guru</Link></li>
-          <li><Link to="/kehadiran" className={location.pathname === '/kehadiran' ? 'active' : ''}>Cek Kehadiran</Link></li>
         </ul>
         
         <div className="nav-buttons mobile">
@@ -102,8 +100,12 @@ const Navbar = ({ authenticated, onLogout }) => {
               <Link to="/dashboard" className="nav-button dashboard-button">Dashboard</Link>
               <button className="nav-button logout-button" onClick={onLogout}>Logout</button>
             </>
-          ) : null}
-          <button className="nav-button hubungi-kami-button">Hubungi Kami</button>
+          ) : (
+            <>
+              <Link to="/login" className="nav-button login-button">Login</Link>
+              <button className="nav-button hubungi-kami-button">Hubungi Kami</button>
+            </>
+          )}
         </div>
       </div>
     </nav>
